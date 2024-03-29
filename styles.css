@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c2afaf;
+  }
+  .quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #eed2d2;
+    border-radius: 10px;
+    background-color: aqua;
+  }
+  .login {
+      text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  .question {
+    margin-bottom: 20px;
+   
+  }
+  .feedback {
+    font-style: italic;
+    margin-top: 10px;
+  }

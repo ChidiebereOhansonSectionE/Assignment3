@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+
+<div class="quiz-container">
+  <h2>Simple Interactive Quiz</h2>
+  <div class="login" id="login">
+    <input type="text" id="username" placeholder="Username user"><br><br>
+    <input type="password" id="password" placeholder="Password pass"><br><br>
+    <button onclick="authenticate()">Login</button>
+  </div>
+  <div id="quiz" style="display: none;">
+    <div class="question">
+      <h3>1. What is the capital of Nigeria?</h3>
+      <input type="radio" name="q1" value="a"> a) London<br>
+      <input type="radio" name="q1" value="b"> b) Abuja<br>
+      <input type="radio" name="q1" value="c"> c) Rome<br>
+      <p class="feedback" id="feedback1"></p>
+    </div>
+    <div class="question">
+      <h3>2. What is the largest planet in our solar system?</h3>
+      <input type="radio" name="q2" value="a"> a) Earth<br>
+      <input type="radio" name="q2" value="b"> b) Jupiter<br>
+      <input type="radio" name="q2" value="c"> c) Mars<br>
+      <p class="feedback" id="feedback2"></p>
+    </div>
+    <div class="question">
+      <h3>3. Who wrote 'Romeo and Juliet'?</h3>
+      <input type="radio" name="q3" value="a"> a) William Shakespeare<br>
+      <input type="radio" name="q3" value="b"> b) Jane Austen<br>
+      <input type="radio" name="q3" value="c"> c) Charles Dickens<br>
+      <p class="feedback" id="feedback3"></p>
+    </div>
+    <button onclick="submitQuiz()">Submit</button>
+    <p id="score" style="display: none;"></p>
+  </div>
+</div>
+
+<script>
+    // Fake authentication
+    function authenticate() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      if (username === "user" && password === "pass") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("quiz").style.display = "block";
+      } else {
+        alert("Invalid username or password. Please try again.");
+      }
+    }
+  
+    // Submit quiz and calculate score
+    function submitQuiz() {
+      var score = 0;
+      var feedback1 = document.getElementById("feedback1");
+      var feedback2 = document.getElementById("feedback2");
+      var feedback3 = document.getElementById("feedback3");
+  
+      var q1Answer = document.querySelector('input[name="q1"]:checked');
+      var q2Answer = document.querySelector('input[name="q2"]:checked');
+      var q3Answer = document.querySelector('input[name="q3"]:checked');
+  
+      if (q1Answer && q1Answer.value === "b") {
+        score++;
+        feedback1.textContent = "Correct!";
+      } else {
+        feedback1.textContent = "Incorrect. The correct answer is b) Paris.";
+      }
+  
+      if (q2Answer && q2Answer.value === "b") {
+        score++;
+        feedback2.textContent = "Correct!";
+      } else {
+        feedback2.textContent = "Incorrect. The correct answer is b) Jupiter.";
+      }
+  
+      if (q3Answer && q3Answer.value === "a") {
+        score++;
+        feedback3.textContent = "Correct!";
+      } else {
+        feedback3.textContent = "Incorrect. The correct answer is a) William Shakespeare.";
+      }
+  
+      document.getElementById("score").textContent = "Your score: " + score + "/3";
+      document.getElementById("score").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
